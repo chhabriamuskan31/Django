@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blogapp.apps.BlogappConfig'
+    'blogapp.apps.BlogappConfig',
+    'authenticate.apps.AuthenticateConfig'
 ]
 
 MIDDLEWARE = [
@@ -77,7 +78,7 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 DATABASES = {
     'default': {  
         'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'django_starter_blog',  
+        'NAME': 'auth_model',  
         'USER': 'root',  
         'PASSWORD': 'Muskan@12345',  
         'HOST': '127.0.0.1',  
