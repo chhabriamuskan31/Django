@@ -42,7 +42,7 @@
     
     <div class="row justify-content-center my-3">
         <div class="col-10">
-            <form action="{% url 'add' %}" method="POST">
+            <form action="{% url 'add' %}" method="POST" enctype="multipart/form-data">
                 <!-- csrf_token ye django mai nhi daala toh error aayega -->
                 {% csrf_token %}
                 <fieldset>
@@ -52,11 +52,15 @@
                     <div class="mb-3">
                         <label for="blogTitle" class="form-label">Blog Title</label>
                         <input type="text" class="form-control" id="blogTitle" name="blogTitle">
-                      </div>
+                    </div>
                       <div class="mb-3">
                         <label for="blogContent" class="form-label">Content</label>
                         <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
                       </div>
+                      <div class="mb-3">
+                        <label for="img" class="form-label">Upload</label>
+                        <input type="file" id="img" name="imgageFile">
+                    </div>
                       <button type="submit" class="btn btn-primary">Submit</button>
                 </fieldset>
             </form>

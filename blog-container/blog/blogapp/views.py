@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db import connection
 from .models import Blog  
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
@@ -35,9 +36,10 @@ def create(request):
 def insert(request):
     title = request.POST['blogTitle']
     content = request.POST['content']
+    file = request.FILES['imgageFile']
     # cursor = connection.cursor()
     # cursor.execute("INSERT INTO posts (`title`,`content`) VALUES ( %s, %s );", (title, content))
-    blog = Blog(title=title, content=content)
+    blog = Blog(title=title, content=content, file=file)
     blog.save()
     return redirect('/blog/home')
     
@@ -75,6 +77,10 @@ def update(request):
     blog.save()
 
     return redirect('/blog/home')
+
+@login_required
+def profile(request):
+    return render(request,'blogapp/profile.html')
 
 def delete(request,pk):
     # cursor = connection.cursor()

@@ -9,6 +9,7 @@ class Blog(models.Model):
     datePosted = models.DateTimeField(null=True)
     personID = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
     softDelete = models.SmallIntegerField(default=0)
+    file = models.ImageField(upload_to='uploads/',null=True)
 # 1 person multiple blogs
 
     
